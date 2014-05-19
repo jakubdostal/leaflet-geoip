@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+    <link rel="stylesheet" href="stylesheets/formatting.css">
+
+
+</head>
+
+<body>
+    <div id="view">
+        Enter IP:
+        <input type="text" id="ip_input" name="ip_input">
+        <input type="submit" value="submit" onclick="submitIP()">
+    </div>
+
+    <div id="map"></div>
+
+
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+    <script src="javascripts/leaflet-geoip.js"></script>
+
+    <script>
+        var map = L.map('map').setView([55.955, -3.21], 12);
+
+
+        var Thunderforest_Transport = L.tileLayer('http://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+        });
+
+        Thunderforest_Transport.addTo(map);
+
+        L.GeoIP.centerMapOnPosition(map);
+
+        function validateIPaddress(address) {
+            if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(address)) {
+                return true;
+            }
+            alert("The IP address you entered is invalid.");
+            return false;
+        }
+
+        function submitIP() {
+            var ip = document.getElementById('ip_input').value;
+            if (validateIPaddress(ip)) {
+                var pos = L.GeoIP.getPosition(ip);
+                L.marker(pos).addTo(map);
+                map.setView(pos);
+            } else {
+                //document.getElementById('ip_input').value = "Invalid IP";
+            }
+
+        }
+    </script>
+</body>
+
+</html>

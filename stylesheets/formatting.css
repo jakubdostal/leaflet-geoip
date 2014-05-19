@@ -1,0 +1,20 @@
+html,
+body,
+#map {
+    margin: 0;
+    padding 0;
+    height: 100%;
+    width: 100%;
+}
+#view {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    z-index: 1000;
+    background-color: #000000;
+    opacity: 0.7;
+    color: #FFFFFF;
+    padding: 1em;
+    font-family: sans-serif;
+}
