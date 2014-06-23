@@ -14,7 +14,7 @@ Get the approximate position of the client machine as a L.LatLng object:
 ```
   var pos = L.GeoIP.getPosition();
 ```
-Centre the map on the approximate location of the client machine:
+Centre the map on the approximate location of the client machine (**note:** the `centerMapOnPosition` function calls `getPosition`):
 ```
   //initialise your map into
   //var map;
