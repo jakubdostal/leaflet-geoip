@@ -21,16 +21,21 @@ Centre the map on the approximate location of the client machine (**note:** the 
 
   L.GeoIP.centerMapOnPosition(map);
 ```
+You have the possibility to pass a zoom parameter as well:
+```javascript
+  L.GeoIP.centerMapOnPosition(map, 15);
+```
 You can also do the same for the location of an arbitraty IP address:
 ```
   var ip = "13.15.13.15";
+  var zoom = 15;
   var pos = L.GeoIP.getPosition(ip);
   
   //or
   
   //initialise your map into
   //var map;
-  L.GeoIP.centerMapOnPosition(map, ip);
+  L.GeoIP.centerMapOnPosition(map, zoom, ip);
 ```
 
 Credits
