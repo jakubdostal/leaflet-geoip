@@ -26,9 +26,8 @@ L.GeoIP = L.extend({
         return result;
     },
 
-    centerMapOnPosition: function (map, ip) {
+    centerMapOnPosition: function (map, zoom, ip) {
         var position = L.GeoIP.getPosition(ip);
-        map.setView(position);
-
+        map.setView(position, zoom);
     }
 });
