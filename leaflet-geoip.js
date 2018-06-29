@@ -1,7 +1,7 @@
 L.GeoIP = L.extend({
 
     getPosition: function (ip) {
-        var url = "http://freegeoip.net/json/";
+        var url = "https://freegeoip.net/json/";
         var result = L.latLng(0, 0);
 
         if (ip !== undefined) {
